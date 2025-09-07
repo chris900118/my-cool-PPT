@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPT封面：数字“魔鬼”与“天使”</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+        :root {
+            --bg-color: #0a0f1e; /* 深邃的星空蓝 */
+            --primary-text-color: #e0e0e0;
+            --angel-color: #00aaff; /* 天使 - 科技蓝 */
+            --demon-color: #c0c0c0; /* 魔鬼 - 冷峻的银白 */
+            --glow-color: rgba(0, 170, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            overflow: hidden; /* 隐藏滚动条 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .slide-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .light-beam {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 120%;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                var(--angel-color),
+                transparent
+            );
+            box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+            opacity: 0.8;
+        }
+
+        .main-title {
+            font-size: 5.5vw; /* 使用vw单位以适应不同屏幕 */
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .main-title .demon {
+            color: var(--demon-color);
+            padding-right: 1.5rem;
+        }
+
+        .main-title .angel {
+            color: var(--angel-color);
+            text-shadow: 0 0 8px var(--glow-color), 0 0 15px var(--glow-color);
+            padding-left: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.8vw;
+            font-weight: 400;
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            margin-bottom: 4rem;
+        }
+
+        .separator {
+            width: 80px;
+            height: 1px;
+            background-color: var(--primary-text-color);
+            opacity: 0.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .speaker-info {
+            font-size: 1.2vw;
+            font-weight: 400;
+            opacity: 0.7;
+            letter-spacing: 0.1em;
+        }
+        
+        /* 响应式设计，保证在小屏幕上也能看 */
+        @media (max-width: 768px) {
+            .main-title { font-size: 8vw; }
+            .subtitle { font-size: 3vw; }
+            .speaker-info { font-size: 2.5vw; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 动态粒子背景的容器 -->
+    <div id="particles-js"></div>
+
+    <!-- 幻灯片内容容器 -->
+    <div class="slide-container">
+        
+        <!-- 中间的光束效果 -->
+        <div class="light-beam"></div>
+
+        <h1 class="main-title">
+            <span class="demon">数字“魔鬼”</span><span class="angel">与“天使”</span>
+        </h1>
+        
+        <h2 class="subtitle">一名IT人的廉洁思考</h2>
+        
+        <div class="separator"></div>
+        
+        <p class="speaker-info">张潇 | 兴城融晟科技</p>
+
+    </div>
+
+    <!-- 引入particles.js库来实现背景动画 -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80, // 粒子数量
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff" // 粒子颜色
+                },
+                "shape": {
+                    "type": "circle",
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false
+                    }
+                },
+                "size": {
+                    "value": 2, // 粒子大小
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150, // 连接线距离
+                    "color": "#ffffff",
+                    "opacity": 0.2, // 连接线透明度
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1, // 移动速度
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab" // 鼠标悬停效果
+                    },
+                    "onclick": {
+                        "enable": false
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.5
+                        }
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+</body>
+</html>
